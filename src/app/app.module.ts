@@ -7,7 +7,8 @@ import {MaterialModule} from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JsonApiInterceptor} from './interceptors/jsonapi-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JsonApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
