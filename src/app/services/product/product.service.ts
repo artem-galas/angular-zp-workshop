@@ -8,7 +8,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(): Observable<IResponse<ProductModel>> {
-    return this.http.get<IResponse<ProductModel>>('/api/products');
+  public getProducts(): Observable<IResponse<ProductModel[]>> {
+    return this.http.get<IResponse<ProductModel[]>>('/api/products');
   }
 }

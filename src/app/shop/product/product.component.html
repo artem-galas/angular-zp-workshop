@@ -3,21 +3,17 @@
     <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
       <mat-card-title>DC Comics</mat-card-title>
-      <mat-card-subtitle>Batman Comics Book</mat-card-subtitle>
+      <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
     </mat-card-header>
     <div mat-card-image class="image-container">
-      <img src="assets/img/BM_Night_Monstermen_57feccb6dceeb4.61857139.jpg" alt="Batman comics">
-      <button class="buy-button" mat-fab>
+      <img [src]="product.image" alt="Batman comics">
+      <button (click)="buyItem()" class="buy-button" mat-fab>
         <mat-icon aria-label="Buy">shopping_cart</mat-icon>
       </button>
     </div>
     <mat-card-content>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Quisque tempus tempus magna, vel rhoncus justo porta ut.
-        Ut ullamcorper malesuada nisl, id feugiat orci aliquet at.
-        Sed ut rutrum tellus, id euismod ante.
-      </p>
+      <p>{{product.description}}</p>
+      <p><strong>${{product.price}}</strong></p>
     </mat-card-content>
   </mat-card>
 </div>
