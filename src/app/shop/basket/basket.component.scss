@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+.card {
+  width: 500px;
+  margin: 0 auto;
+}
+
+mat-list-item:hover {
+  background: mat-color($mat-indigo, 50);
+}

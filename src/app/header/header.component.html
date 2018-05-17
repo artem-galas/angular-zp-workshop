@@ -1,9 +1,9 @@
 <header>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Angular Shop</span>
+      <span [routerLink]="['shop']">Angular Shop</span>
       <span class="spacer"></span>
-      <mat-icon class="icon">shopping_cart</mat-icon>
+      <mat-icon class="icon" [routerLink]="['shop/basket']">shopping_cart</mat-icon>
       <mat-icon class="icon">person</mat-icon>
       <mat-icon class="icon">exit_to_app</mat-icon>
     </mat-toolbar-row>
