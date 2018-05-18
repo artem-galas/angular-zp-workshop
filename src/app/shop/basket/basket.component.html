@@ -7,9 +7,9 @@
   <mat-card-content>
     <mat-list>
       <h3 mat-subheader>Products</h3>
-      <mat-list-item *ngFor="let product of products">
+      <mat-list-item *ngFor="let product of (products$ | async); let i = index">
         <mat-icon mat-list-icon>book</mat-icon>
-        <mat-icon>delete</mat-icon>
+        <mat-icon (click)="removeProduct(i)">delete</mat-icon>
         <h4 mat-line>{{product.title}}</h4>
         <p mat-line>
           <strong>{{product.price | currency}}</strong>
