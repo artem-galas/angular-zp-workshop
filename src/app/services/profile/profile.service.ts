@@ -11,4 +11,10 @@ export class ProfileService {
   public getProfile(): Observable<IResponse<UserModel>> {
     return this.http.get<IResponse<UserModel>>('/api/profile');
   }
+
+  public updateProfileImage(file: File): Observable<IResponse<UserModel>> {
+    const formDataFile: FormData = new FormData;
+    formDataFile.append('avatar', file);
+    return this.http.put<IResponse<UserModel>>('/api/profile/avatar', formDataFile);
+  }
 }

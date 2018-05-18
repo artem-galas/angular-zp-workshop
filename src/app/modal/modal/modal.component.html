@@ -1,0 +1,5 @@
+<div [@dialog] class="modal" *ngIf="(this.modalService.show$ | async)">
+  <span class="cancel" (click)="closeModal()"><mat-icon class="material-icons">close</mat-icon></span>
+  <ng-content></ng-content>
+</div>
+<div [@backdrop] class="modal-backdrop" *ngIf="(this.modalService.show$ | async)" (click)="closeModal()"></div>

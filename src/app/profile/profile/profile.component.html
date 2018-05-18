@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content *ngIf="profile">
     <div class="profile-content">
-      <div class="profile-image">
+      <div class="profile-image" (click)="openModal()">
         <img [src]="profile.avatar">
       </div>
       <div class="profile-info">
@@ -16,3 +16,13 @@
     </div>
   </mat-card-content>
 </mat-card>
+
+<ngwzp-modal>
+  <div class="modal-body">
+    <h3>Edit Profile Image</h3>
+    <img class="modal-image" *ngIf="newImage" [src]="newImage">
+    <div class="modal-data">
+      <input type="file" (change)="loadImage($event)">
+    </div>
+  </div>
+</ngwzp-modal>
