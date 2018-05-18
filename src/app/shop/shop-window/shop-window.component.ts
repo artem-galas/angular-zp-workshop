@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from '../../services/product/product.service';
 import {ProductModel} from '../../models';
+import {Store} from '@ngrx/store';
+import * as fromStore from '../../store'
+import {Observable} from 'rxjs/index';
 
 @Component({
   selector: 'ngwzp-shop-window',
@@ -8,15 +10,14 @@ import {ProductModel} from '../../models';
   styleUrls: ['./shop-window.component.scss']
 })
 export class ShopWindowComponent implements OnInit {
+  public products$: Observable<ProductModel[]>;
 
-  public products: ProductModel[];
-  constructor(private productService: ProductService) { }
+  constructor(private store: Store<fromStore.ItemState>) {
+    this.products$ = this.store.select(fromStore.getAllProducts);
+    this.store.dispatch(new fromStore.GetProducts());
+  }
 
   ngOnInit() {
-    this.productService.getProducts()
-      .subscribe((products) => {
-        this.products = products.data
-      })
   }
 
 }
