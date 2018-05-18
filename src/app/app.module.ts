@@ -16,6 +16,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JsonApiInterceptor} from './interceptors/jsonapi-interceptor';
 import {environment} from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TokenInterceptor} from './interceptors/token-interceptor';
+import {TokenService} from './services/token/token.service';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -47,6 +49,12 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
       useClass: JsonApiInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

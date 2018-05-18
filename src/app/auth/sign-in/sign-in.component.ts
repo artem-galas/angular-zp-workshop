@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngwzp-sign-in',
@@ -11,7 +12,8 @@ export class SignInComponent implements OnInit {
   public signInForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.buildSignInForm();
@@ -28,9 +30,10 @@ export class SignInComponent implements OnInit {
     if (this.signInForm.valid) {
       this.authService
         .signInUser(this.signInForm.value)
-        .subscribe(res => {
-          console.log(res);
-        })
+        .subscribe(
+          (user) => this.router.navigate(['/shop']),
+          (err) => console.log(err)
+        );
     }
   }
 
