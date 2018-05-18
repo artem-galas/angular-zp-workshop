@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'shop',
     loadChildren: './shop/shop.module#ShopModule'
   },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
 ];
 
 @NgModule({
