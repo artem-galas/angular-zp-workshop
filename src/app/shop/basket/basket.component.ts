@@ -6,6 +6,7 @@ import * as fromStore from '../../store';
 
 import * as BasketAction from '../../store/actions/basket.actions';
 import {Observable} from 'rxjs/index';
+import {BasketService} from '../../services/basket/basket.service';
 
 @Component({
   selector: 'ngwzp-basket',
@@ -15,15 +16,14 @@ import {Observable} from 'rxjs/index';
 export class BasketComponent implements OnInit {
   public products$: Observable<ProductModel[]>;
 
-  constructor(private store: Store<fromStore.ItemState>) {}
+  constructor(private basketService: BasketService) {}
 
   ngOnInit() {
-    this.products$ = this.store.select(fromStore.getBasketProducts);
-    this.store.dispatch(new fromStore.GetBasketProducts());
+    this.products$ = this.basketService.basketItems$;
   }
 
   removeProduct(index: number): void {
-    this.store.dispatch(new BasketAction.RemoveProduct(index));
+    this.basketService.removeFromBasket(index)
   }
 
 }

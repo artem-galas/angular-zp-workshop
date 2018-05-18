@@ -3,6 +3,7 @@ import {ProductModel} from '../../models';
 import {Store} from '@ngrx/store';
 
 import * as BasketAction from '../../store/actions/basket.actions';
+import {BasketService} from '../../services/basket/basket.service';
 
 @Component({
   selector: 'ngwzp-product',
@@ -13,13 +14,13 @@ export class ProductComponent implements OnInit {
   @Input('product')
   public product: ProductModel;
 
-  constructor(private store: Store<ProductModel>) { }
+  constructor(private basketService: BasketService) { }
 
   ngOnInit() {
   }
 
   public buyItem() {
-    this.store.dispatch(new BasketAction.AddProduct(this.product));
+    this.basketService.addItemToBasket(this.product);
   }
 
 }

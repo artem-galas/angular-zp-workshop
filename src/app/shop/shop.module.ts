@@ -12,6 +12,7 @@ import {ProductService} from '../services/product/product.service';
 import { BasketComponent } from './basket/basket.component';
 
 import {effects, reducers} from '../store';
+import {BasketService} from '../services/basket/basket.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {effects, reducers} from '../store';
   ],
   declarations: [ShopWindowComponent, ProductComponent, BasketComponent],
   providers: [
-    ProductService
+    ProductService,
+    BasketService
   ]
 })
 export class ShopModule { }
