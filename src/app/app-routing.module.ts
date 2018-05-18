@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule'
   }
 ];
 
